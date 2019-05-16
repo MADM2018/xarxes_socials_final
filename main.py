@@ -37,9 +37,10 @@ def walk_all_files():
                 process_file(name)
 
 
-def process_file(name):
+def process_file(filename):
     db = init_db()
 
+    name = os.path.join(PATH, filename)
     with open(name, 'rb') as f:  # opening file in binary(rb) mode
         for item in json_lines.reader(f):
             insert_in_db(item, db)
